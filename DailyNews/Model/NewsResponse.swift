@@ -14,12 +14,9 @@ struct NewsResponse: Decodable {
         let title: String?
         let description: String?
         let url: String?
-        var link: URL?{
+        var link: URL? {
             url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed).flatMap { URL(string: $0)}
-            
         }
         let urlToImage: URL?
-        let publishedAt: String?
-        let content: String?
     }
 }

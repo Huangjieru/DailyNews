@@ -21,7 +21,7 @@ class NewsViewController: UIViewController {
         setView()
         bindViewModel()
         
-        viewModel.fetchNews()
+        viewModel.fetchNews(country: "us")
         
         refreshControl()
     }
@@ -69,7 +69,7 @@ extension NewsViewController: UISearchBarDelegate{
         searchBar.endEditing(true)
         
         //下方重新抓取資料並顯示
-        viewModel.fetchNews()
+        viewModel.fetchNews(country: "us")
     }
 }
 
@@ -107,7 +107,7 @@ extension NewsViewController {
     
     //更新資料與停止更新
     @objc private func pullToRefresh(){
-        viewModel.fetchNews()
+        viewModel.fetchNews(country: "us")
         tableView.refreshControl?.endRefreshing()
     }
 }

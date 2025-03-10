@@ -10,13 +10,11 @@ import UIKit
 class NewsCellViewModel {
     var picImage: ((UIImage)->())?
     
-    var articles: NewsResponse.Article?
     var title: String?
     var description: String?
     var link: URL?
      
     func setViewModel(with articles: NewsResponse.Article){
-        self.articles = articles
         self.title = articles.title
         self.description = articles.description
         self.link = articles.link

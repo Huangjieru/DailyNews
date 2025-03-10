@@ -12,32 +12,44 @@ class NewsViewModel {
     
     var newsCellVMs = [NewsCellViewModel]()
     
-    func fetchNews(){
+    func fetchNews(country: String){
         newsCellVMs = []
-        NewsManager.shared.fetchItems { [weak self] newsList in
+        
+        let parameters = ["country": country]
+        NewsManager.shared.managers(object: NewsResponse.self, method: .get, apiUrl: APIUrl.topHeadlines(type: .topHeadlines), parameters: parameters) {[weak self] result in
             guard let self = self else {return}
-            newsList?.forEach { news in
-                let newsCellVM = NewsCellViewModel()
-                newsCellVM.setViewModel(with: news)
-                self.newsCellVMs.append(newsCellVM)
+            switch result {
+            case .success(let newsResponse):
+                newsResponse.articles.forEach { news in
+                    let newsCellVM = NewsCellViewModel()
+                    newsCellVM.setViewModel(with: news)
+                    self.newsCellVMs.append(newsCellVM)
+                }
+                self.reloadData?()
+            case .failure(let error):
+                print("沒有Response: \(error)")
             }
-            self.reloadData?()
         }
     }
     
+    //搜尋新聞的API
     func fetchSearchNews(text: String){
         newsCellVMs = []
-        NewsManager.shared.fetchSearchNews(text: text) { [weak self] newsList in
+        let parameters = ["searchIn" : "title", "q" : text]
+        NewsManager.shared.managers(object: NewsResponse.self, method: .get, apiUrl: APIUrl.everything(type: .everything), parameters: parameters) { [weak self] result in
             guard let self = self else {return}
-            if let newsList{
+            switch result {
+            case .success(let newsResponse):
                 DispatchQueue.main.async {
-                    newsList.forEach { news in
+                    newsResponse.articles.forEach { news in
                         let newsCellVM = NewsCellViewModel()
                         newsCellVM.setViewModel(with: news)
                         self.newsCellVMs.append(newsCellVM)
                     }
                     self.reloadData?()
                 }
+            case .failure(let error):
+                print("沒有Response: \(error)")
             }
         }
     }
