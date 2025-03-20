@@ -92,6 +92,7 @@ class NewsManager {
 }
 
 extension NewsManager {
+    
     private func getPrettyPrinJson(_ responseValue: Any) -> String {
         var string: String = ""
         if let json = try? JSONSerialization.jsonObject(with: responseValue as! Data, options: .mutableContainers),

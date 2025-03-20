@@ -28,18 +28,25 @@ class NewsCell: UITableViewCell {
         self.titleLabel.text = viewModel.title
         self.descriptionLabel.text = viewModel.description
         
-        self.picImageView.image = UIImage(systemName: "newspaper.fill")
-        viewModel.picImage = { [weak self] image in
-            DispatchQueue.main.async {
-                self?.picImageView.image = image
-            }
-        }
-        
         titleLabel.numberOfLines = 2
         descriptionLabel.numberOfLines = 0
         
         picImageView.layer.cornerRadius = 8
         picImageView.contentMode = .scaleAspectFill
+        
+        self.picImageView.image = UIImage(systemName: "newspaper")
+        if let url = viewModel.imageUrl, let cachedImage = NewsManager.shared.imageCache.object(forKey: url as NSURL){
+            self.picImageView.image = cachedImage
+        }else {
+            if let url = viewModel.imageUrl {
+                NewsManager.shared.fetchImage(from: url) { [weak self] image in
+                    if let image = image {
+                        DispatchQueue.main.async {
+                            self?.picImageView.image = image
+                        }
+                    }
+                }
+            }
+        }
     }
-    
 }

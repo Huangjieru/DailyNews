@@ -39,14 +39,14 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
-        print("DEBUG cellForRowAt: \(viewModel.newsCellVMs.count)")
         let newsCellVM = viewModel.newsCellVMs[indexPath.row]
         cell.setCell(viewModel: newsCellVM)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let newsDetail = viewModel.newsCellVMs[indexPath.row].link{
+        if let newsDetail = viewModel.newsCellVMs[indexPath.row].link {
             let safariViewController = SFSafariViewController(url: newsDetail)
             present(safariViewController, animated: true)
         }
@@ -67,8 +67,6 @@ extension NewsViewController: UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.endEditing(true)
-        
-        //下方重新抓取資料並顯示
         viewModel.fetchNews(country: "us")
     }
 }

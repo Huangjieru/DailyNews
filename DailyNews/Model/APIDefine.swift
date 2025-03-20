@@ -7,7 +7,7 @@
 
 import Foundation
 
-let APITimeout: Double = 60.0
+//let APITimeout: Double = 60.0
 
 enum APIUrl {
     case topHeadlines(type: TopHeadlines)

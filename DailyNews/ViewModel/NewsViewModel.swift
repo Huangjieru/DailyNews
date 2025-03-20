@@ -35,6 +35,7 @@ class NewsViewModel {
     //搜尋新聞的API
     func fetchSearchNews(text: String){
         newsCellVMs = []
+        
         let parameters = ["searchIn" : "title", "q" : text]
         NewsManager.shared.managers(object: NewsResponse.self, method: .get, apiUrl: APIUrl.everything(type: .everything), parameters: parameters) { [weak self] result in
             guard let self = self else {return}
