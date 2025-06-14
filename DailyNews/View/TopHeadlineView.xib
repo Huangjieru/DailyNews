@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopHeadlineView" customModule="DailyNews" customModuleProvider="target">
+            <connections>
+                <outlet property="newsImageView" destination="gHA-Mm-Tjk" id="OYF-j7-RaF"/>
+                <outlet property="newsTitle" destination="ghf-rz-O2G" id="c2Y-77-l7V"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="373" height="250"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gHA-Mm-Tjk">
+                    <rect key="frame" x="0.0" y="0.0" width="373" height="250"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="nIw-TH-USS"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3p-GX-Quw">
+                    <rect key="frame" x="0.0" y="234" width="373" height="16"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghf-rz-O2G">
+                            <rect key="frame" x="8" y="8" width="357" height="0.0"/>
+                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ghf-rz-O2G" firstAttribute="top" secondItem="f3p-GX-Quw" secondAttribute="top" constant="8" id="Ee8-bt-XxE"/>
+                        <constraint firstItem="ghf-rz-O2G" firstAttribute="leading" secondItem="f3p-GX-Quw" secondAttribute="leading" constant="8" id="iAs-lv-Cbl"/>
+                        <constraint firstAttribute="bottom" secondItem="ghf-rz-O2G" secondAttribute="bottom" constant="8" id="nPT-Gg-08e"/>
+                        <constraint firstAttribute="trailing" secondItem="ghf-rz-O2G" secondAttribute="trailing" constant="8" id="rhI-Qp-tsp"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="f3p-GX-Quw" firstAttribute="trailing" secondItem="gHA-Mm-Tjk" secondAttribute="trailing" id="0sd-v7-VyZ"/>
+                <constraint firstAttribute="trailing" secondItem="gHA-Mm-Tjk" secondAttribute="trailing" id="HZW-lA-g43"/>
+                <constraint firstAttribute="top" secondItem="gHA-Mm-Tjk" secondAttribute="top" id="SFg-Ac-oYU"/>
+                <constraint firstItem="f3p-GX-Quw" firstAttribute="centerX" secondItem="gHA-Mm-Tjk" secondAttribute="centerX" id="d4O-x8-fwm"/>
+                <constraint firstItem="gHA-Mm-Tjk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="egf-Rv-2V5"/>
+                <constraint firstAttribute="bottom" secondItem="gHA-Mm-Tjk" secondAttribute="bottom" id="kG8-Pt-sb5"/>
+                <constraint firstItem="gHA-Mm-Tjk" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="pn0-pw-cuJ"/>
+                <constraint firstItem="f3p-GX-Quw" firstAttribute="bottom" secondItem="gHA-Mm-Tjk" secondAttribute="bottom" id="qmm-dy-7fs"/>
+                <constraint firstItem="f3p-GX-Quw" firstAttribute="leading" secondItem="gHA-Mm-Tjk" secondAttribute="leading" id="rMf-Kd-D3r"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-67.175572519083971" y="-192.25352112676057"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

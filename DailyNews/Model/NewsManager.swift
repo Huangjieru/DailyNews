@@ -15,7 +15,7 @@ class NewsManager {
     //NSCache 要求它的 key & value 的型別都必須是物件，因此只能傳入 class 定義的型別，而 URL 是 struct。
     //NSCache 比較不會造成記憶體的問題，因為當系統記憶體不夠時，它會自動將東西從 cache 裡移除
     
-    func managers<T: Decodable> (object: T.Type, method: HTTPMethod, appendUrl: String = "", apiUrl: APIUrl, parameters: [String: String]? = nil, completion: @escaping (Result<T, Error>) -> Void) {
+    func managers<T: Decodable> (object: T.Type, method: HTTPMethod, appendUrl: String = "", apiUrl: APIUrl, parameters: [String: Any]? = nil, completion: @escaping (Result<T, Error>) -> Void) {
         
         let encoderUrl = appendUrl
         var requestUrl = ""
@@ -36,7 +36,7 @@ class NewsManager {
         urlComponents.host = "newsapi.org"
         urlComponents.path = "/v2\(requestUrl)"
         urlComponents.queryItems = newParameter.map({ para in
-            URLQueryItem(name: para.key, value: para.value)
+            URLQueryItem(name: para.key, value: "\(para.value)")
         })
         
         guard let url = urlComponents.url else { return }
